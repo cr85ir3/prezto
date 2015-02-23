@@ -81,6 +81,33 @@ function prompt_sorin_async_tasks {
   async_job prompt_sorin prompt_sorin_async_git "$PWD"
 }
 
+function prompt_sorin_git_info {
+  # Append Git status.
+  if [[ -s "$_prompt_sorin_precmd_async_data" ]]; then
+    alias typeset='typeset -g'
+    source "$_prompt_sorin_precmd_async_data"
+    RPROMPT+='${git_info:+${(e)git_info[status]}}'
+    unalias typeset
+  fi
+
+  # Reset PID.
+  _prompt_sorin_precmd_async_pid=0
+
+  # Redisplay prompt.
+  zle && zle reset-prompt
+}
+
+function prompt_sorin_precmd_async {
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+    typeset -p git_info >! "$_prompt_sorin_precmd_async_data"
+  fi
+
+  # Signal completion to parent process.
+  kill -USR1 $$
+}
+
 function prompt_sorin_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -88,6 +115,7 @@ function prompt_sorin_precmd {
   # Format PWD.
   _prompt_sorin_pwd=$(prompt-pwd)
 
+<<<<<<< HEAD
   # Handle updating git data. We also clear the git prompt data if we're in a
   # different git root now.
   if (( $+functions[git-dir] )); then
@@ -104,14 +132,34 @@ function prompt_sorin_precmd {
   fi
 
   prompt_sorin_async_tasks
+=======
+  # Define prompts.
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${INSIDE_EMACS:+" %B%F{green}E%f%b"}%f'
+
+  # Kill the old process of slow commands if it is still running.
+  if (( _prompt_sorin_precmd_async_pid > 0 )); then
+    kill -TERM "$_prompt_sorin_precmd_async_pid" &>/dev/null
+  fi
+
+  # Compute slow commands in the background.
+  trap prompt_sorin_git_info USR1
+  prompt_sorin_precmd_async &!
+  _prompt_sorin_precmd_async_pid=$!
+>>>>>>> Get Git status asynchronously
 }
 
 function prompt_sorin_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
+<<<<<<< HEAD
   prompt_opts=(cr percent sp subst)
   _prompt_sorin_precmd_async_pid=0
   _prompt_sorin_precmd_async_data=$(mktemp "${TMPDIR:-/tmp}/sorin-prompt-async-XXXXXXXXXX")
+=======
+  prompt_opts=(cr percent subst)
+  _prompt_sorin_precmd_async_pid=0
+  _prompt_sorin_precmd_async_data="${TMPPREFIX}-prompt_sorin_data"
+>>>>>>> Get Git status asynchronously
 
   # Load required functions.
   autoload -Uz add-zsh-hook
@@ -142,6 +190,7 @@ function prompt_sorin_setup {
   zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{3}═%f%%b'
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
+<<<<<<< HEAD
     'status' '%b %p %c:%s%A%B%S%a%d%m%r%U%u'
 
   # Set python-info parameters.
@@ -175,6 +224,14 @@ function prompt_sorin_preview {
 
   editor-info 2> /dev/null
   prompt_preview_theme 'sorin'
+=======
+    'status' ' %F{blue}git%f$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
+
+  # Define prompts.
+  PROMPT='${SSH_TTY:+"%F{red}%n%f@%F{yellow}%m%f "}%F{cyan}${_prompt_sorin_pwd}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+  RPROMPT=''
+  SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+>>>>>>> Get Git status asynchronously
 }
 
 prompt_sorin_setup "$@"
