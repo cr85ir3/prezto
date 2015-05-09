@@ -35,8 +35,17 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt'
-
+  'prompt'  \
+  'git' \
+  'fasd' \
+  'helper' \
+  'homebrew' \
+  'node'  \
+  'osx'  \
+  'rsync' \
+  'tmux'  \
+  'syntax-highlighting' \
+  'custom'
 #
 # Autosuggestions
 #
@@ -60,7 +69,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Allow the zsh prompt context to be shown.
 #zstyle ':prezto:module:editor' ps-context 'yes'
@@ -113,7 +122,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'random'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -209,6 +218,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
+<<<<<<< HEAD
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
@@ -222,3 +232,12 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
+=======
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+
+#load custom plugins
+for file in $HOME/.zprezto/custom/*.zsh; do
+  source "$file" 
+done
+>>>>>>> cooper init

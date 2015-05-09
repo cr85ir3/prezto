@@ -1,4 +1,8 @@
 *.zwc
 *.zwc.old
 modules/*/cache.zsh
+<<<<<<< HEAD
 contrib
+=======
+custom/
+>>>>>>> cooper init
