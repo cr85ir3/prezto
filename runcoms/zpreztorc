@@ -32,8 +32,17 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt'
-
+  'prompt'  \
+  'git' \
+  'fasd' \
+  'helper' \
+  'homebrew' \
+  'node'  \
+  'osx'  \
+  'rsync' \
+  'tmux'  \
+  'syntax-highlighting' \
+  'custom'
 #
 # Editor
 #
@@ -42,7 +51,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
 # Git
@@ -85,7 +94,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'random'
 
 #
 # Ruby
@@ -154,4 +163,10 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
-# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+
+#load custom plugins
+for file in $HOME/.zprezto/custom/*.zsh; do
+  source "$file" 
+done
