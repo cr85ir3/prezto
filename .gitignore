@@ -2,7 +2,10 @@
 *.zwc.old
 modules/*/cache.zsh
 <<<<<<< HEAD
+<<<<<<< HEAD
 contrib
 =======
 custom/
 >>>>>>> cooper init
+=======
+>>>>>>> unignore custom dir
