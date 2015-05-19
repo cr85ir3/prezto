@@ -29,6 +29,27 @@
 # 15 bright white
 #
 
+#
+# 16 TERMINAL COLORS
+# -- ---------------
+#  0 black
+#  1 red
+#  2 green
+#  3 yellow
+#  4 blue
+#  5 magenta
+#  6 cyan
+#  7 white
+#  8 bright black
+#  9 bright red
+# 10 bright green
+# 11 bright yellow
+# 12 bright blue
+# 13 bright magenta
+# 14 bright cyan
+# 15 bright white
+#
+
 # Load dependencies.
 pmodload 'helper'
 
@@ -134,7 +155,7 @@ function prompt_sorin_precmd {
   prompt_sorin_async_tasks
 =======
   # Define prompts.
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${INSIDE_EMACS:+" %B%F{green}E%f%b"}%f'
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎%f)${VIM:+" %B%F{6}V%f%b"}${INSIDE_EMACS:+" %B%F{6}E%f%b"}%f'
 
   # Kill the old process of slow commands if it is still running.
   if (( _prompt_sorin_precmd_async_pid > 0 )); then
@@ -232,10 +253,14 @@ function prompt_sorin_preview {
 >>>>>>> Remove 'git:' prefix
 
   # Define prompts.
-  PROMPT='${SSH_TTY:+"%F{red}%n%f@%F{yellow}%m%f "}%F{cyan}${_prompt_sorin_pwd}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+  PROMPT='${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_sorin_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
   RPROMPT=''
+<<<<<<< HEAD
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 >>>>>>> Get Git status asynchronously
+=======
+  SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
+>>>>>>> Use numerical colors
 }
 
 prompt_sorin_setup "$@"
