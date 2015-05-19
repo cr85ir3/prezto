@@ -191,6 +191,7 @@ function prompt_sorin_setup {
   zstyle ':prezto:module:git:info:untracked' format ' %%B%F{7}◼%f%%b'
   zstyle ':prezto:module:git:info:keys' format \
 <<<<<<< HEAD
+<<<<<<< HEAD
     'status' '%b %p %c:%s%A%B%S%a%d%m%r%U%u'
 
   # Set python-info parameters.
@@ -226,6 +227,9 @@ function prompt_sorin_preview {
   prompt_preview_theme 'sorin'
 =======
     'status' ' %F{blue}git%f$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
+=======
+    'status' '$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
+>>>>>>> Remove 'git:' prefix
 
   # Define prompts.
   PROMPT='${SSH_TTY:+"%F{red}%n%f@%F{yellow}%m%f "}%F{cyan}${_prompt_sorin_pwd}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
