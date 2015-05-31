@@ -129,7 +129,7 @@ function prompt_sorin_precmd_async {
   fi
 
   # Signal completion to parent process.
-  kill -USR1 $$
+  kill -WINCH $$
 }
 
 function prompt_sorin_precmd {
@@ -166,7 +166,7 @@ function prompt_sorin_precmd {
   fi
 
   # Compute slow commands in the background.
-  trap prompt_sorin_git_info USR1
+  trap prompt_sorin_git_info WINCH
   prompt_sorin_precmd_async &!
   _prompt_sorin_precmd_async_pid=$!
 >>>>>>> Get Git status asynchronously
