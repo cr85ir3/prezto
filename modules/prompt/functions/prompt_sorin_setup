@@ -268,4 +268,13 @@ function prompt_sorin_preview {
 >>>>>>> Use numerical colors
 }
 
+function prompt_sorin_preview {
+  local +h PROMPT=''
+  local +h RPROMPT=''
+  local +h SPROMPT=''
+
+  editor-info 2>/dev/null
+  prompt_preview_theme 'sorin'
+}
+
 prompt_sorin_setup "$@"
