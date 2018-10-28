@@ -45,6 +45,7 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'tmux'  \
   'syntax-highlighting' \
+<<<<<<< HEAD
 #
 # Autosuggestions
 #
@@ -60,6 +61,8 @@ zstyle ':prezto:load' pmodule \
 # zstyle ':prezto:module:completion:*:hosts' etc-host-ignores \
 #   '0.0.0.0' '127.0.0.1'
 
+=======
+>>>>>>> 3d450592f15f8cdfaeb5385b27d727bae19d033f
 #
 # Editor
 #
@@ -69,9 +72,12 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
+<<<<<<< HEAD
 
 # Allow the zsh prompt context to be shown.
 #zstyle ':prezto:module:editor' ps-context 'yes'
+=======
+>>>>>>> 3d450592f15f8cdfaeb5385b27d727bae19d033f
 
 #
 # Git
@@ -122,6 +128,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'random'
+<<<<<<< HEAD
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -141,6 +148,8 @@ zstyle ':prezto:module:prompt' theme 'random'
 
 # Automatically initialize virtualenvwrapper if pre-requisites are met.
 # zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+=======
+>>>>>>> 3d450592f15f8cdfaeb5385b27d727bae19d033f
 
 #
 # Ruby
@@ -218,6 +227,7 @@ zstyle ':prezto:module:prompt' theme 'random'
 
 # Integrate with iTerm2.
 <<<<<<< HEAD
+<<<<<<< HEAD
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
@@ -232,6 +242,8 @@ zstyle ':prezto:module:prompt' theme 'random'
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 =======
+=======
+>>>>>>> 3d450592f15f8cdfaeb5385b27d727bae19d033f
 zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 
@@ -239,4 +251,7 @@ zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 for file in $HOME/.zprezto/custom/*.zsh; do
   source "$file" 
 done
+<<<<<<< HEAD
 >>>>>>> cooper init
+=======
+>>>>>>> 3d450592f15f8cdfaeb5385b27d727bae19d033f
